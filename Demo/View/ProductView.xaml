@@ -7,6 +7,58 @@
         mc:Ignorable="d"
         Title="ProductView" Height="450" Width="800" Closed="Window_Closed">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" Name="tbSearch" TextChanged="TextBox_TextChanged"></TextBox>
+            <ComboBox Grid.Column="1" SelectedItem="{Binding SelectedManuFacter}" ItemsSource="{Binding ManuFacters}" DisplayMemberPath="Name" SelectionChanged="ComboBox_SelectionChanged"></ComboBox>
+            <ComboBox Grid.Column="2" ItemsSource="{Binding SortItems}" DisplayMemberPath="Text" SelectedItem="{Binding SelectedSort}" SelectionChanged="ComboBox_SelectionChanged_1"></ComboBox>
+        </Grid>
+
+
+        <ListView Grid.Row="1" Name="lvProducts" ItemsSource="{Binding Products}" HorizontalContentAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="48"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" Height="48" Width="48" Margin="10">
+                            <Image Source="{Binding ProductPhoto}"/>
+                        </Border>
+
+                        <TextBlock Grid.Column="1">
+                            <Run FontWeight="Bold" Text="{Binding ProductName}"></Run>
+                            <LineBreak></LineBreak>
+                            <Run  Text="{Binding ProductDescription}"></Run>
+                            <LineBreak></LineBreak>
+                            <Run  Text="{Binding ManuFacter.Name}"></Run>
+                            <LineBreak></LineBreak>
+                            <Run  Text="{Binding ProductCost}"></Run>
+                        </TextBlock>
+
+                        <TextBlock Grid.Column="2" FontSize="24" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding ProductQuantityInStock}"></TextBlock>
+                        
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Row="2">
+            
+        </StackPanel>
     </Grid>
 </Window>
