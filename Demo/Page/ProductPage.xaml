@@ -1,0 +1,63 @@
+﻿<Window x:Class="Demo.Page.ProductPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Demo.Page"
+        mc:Ignorable="d"
+        Title="ProductPage" Height="550" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="320"/>
+            <ColumnDefinition Width="320"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" x:Name="ProductBlock">
+            <Label FontFamily="Comic Sans MS">Артикул товара</Label>
+            <TextBox FontFamily="Comic Sans MS" Text="{Binding ProductArticleNumber}"></TextBox>
+            <Label FontFamily="Comic Sans MS">Название</Label>
+            <TextBox FontFamily="Comic Sans MS" Text="{Binding ProductName}"></TextBox>
+            <Label FontFamily="Comic Sans MS">Цена</Label>
+            <TextBox FontFamily="Comic Sans MS" Text="{Binding ProductCost}"></TextBox>
+            <Label FontFamily="Comic Sans MS">Количество на складе</Label>
+            <TextBox FontFamily="Comic Sans MS" Text="{Binding ProductQuantityInStock}"></TextBox>
+            <Label FontFamily="Comic Sans MS">Скидка</Label>
+            <TextBox FontFamily="Comic Sans MS" Text="{Binding ProductDiscountAmount}"></TextBox>
+            <Label FontFamily="Comic Sans MS">Описание</Label>
+            <TextBox FontFamily="Comic Sans MS" Text="{Binding ProductDescription}"></TextBox>
+            <Label FontFamily="Comic Sans MS">Производитель</Label>
+            <ComboBox FontFamily="Comic Sans MS" Margin="10" Height="24" SelectedItem="{Binding ManuFacter}" Name="cbManuFacter"></ComboBox>
+            <Label FontFamily="Comic Sans MS">Поставщик</Label>
+            <ComboBox FontFamily="Comic Sans MS" Margin="10" Height="24" SelectedItem="{Binding Provider}" Name="cbProvider"></ComboBox>
+            <Label FontFamily="Comic Sans MS">Категория</Label>
+            <ComboBox FontFamily="Comic Sans MS" Margin="10" Height="24" SelectedItem="{Binding ProductCategory1}" Name="cbCategory"></ComboBox>
+            <Button FontFamily="Comic Sans MS" Name="buttonSave" Click="buttonSave_Click">Добавить</Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <Label FontFamily="Comic Sans MS">Изображение</Label>
+            <Image  Name="ImagePreview" Width="300" Height="236">
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Setter Property="Source" Value="{Binding ProductPhoto}"/>
+
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ProductPhoto}" Value="{x:Null}">
+                                <Setter Property="Source" Value="/Demo;component/Resources/picture.png"/>
+
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <Button FontFamily="Comic Sans MS" Click="SelectImage_Click" Margin="72,0,38,0">Выбрать</Button>
+        </StackPanel>
+    </Grid>
+</Window>

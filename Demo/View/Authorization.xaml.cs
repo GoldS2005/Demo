@@ -71,18 +71,34 @@ namespace Demo.View
                 isRequireCaptcha = false;
             }
 
+            ProductView productView = new ProductView(entities, user);
             switch (user.Role.RoleName)
             {
+
                 case "Администратор":
-                    break;
-                case "Менеджер":
-                    ProductView productView = new ProductView(entities, user);
                     productView.Owner = this;
                     productView.Show();
                     Hide();
                     break;
-                case "Клиент":
+                case "Менеджер":
+                    productView.Owner = this;
+                    productView.Show();
+                    Hide();
+                    productView.addButton.IsEnabled = false;
+                    productView.deleteButton.IsEnabled = false;
+                    productView.redacButton.IsEnabled = false;
                     break;
+                case "Клиент":
+
+                    productView.Owner = this;
+                    productView.Show();
+                    Hide();
+                    productView.addButton.IsEnabled = false;
+                    productView.deleteButton.IsEnabled = false;
+                    productView.redacButton.IsEnabled = false;
+                    break;
+
+                   
 
             }
         }

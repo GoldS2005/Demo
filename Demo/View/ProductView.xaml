@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Demo.View"
         mc:Ignorable="d"
-        Title="ProductView" Height="450" Width="800" Closed="Window_Closed">
+        Title="ProductView" Height="550" Width="800" Closed="Window_Closed">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -20,9 +20,9 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Column="0" Name="tbSearch" TextChanged="TextBox_TextChanged"></TextBox>
-            <ComboBox Grid.Column="1" SelectedItem="{Binding SelectedManuFacter}" ItemsSource="{Binding ManuFacters}" DisplayMemberPath="Name" SelectionChanged="ComboBox_SelectionChanged"></ComboBox>
-            <ComboBox Grid.Column="2" ItemsSource="{Binding SortItems}" DisplayMemberPath="Text" SelectedItem="{Binding SelectedSort}" SelectionChanged="ComboBox_SelectionChanged_1"></ComboBox>
+            <TextBox FontFamily="Comic Sans MS" Grid.Column="0" Name="tbSearch" TextChanged="TextBox_TextChanged"></TextBox>
+            <ComboBox FontFamily="Comic Sans MS" Grid.Column="1" SelectedItem="{Binding SelectedManuFacter}" ItemsSource="{Binding ManuFacters}" DisplayMemberPath="Name" SelectionChanged="ComboBox_SelectionChanged"></ComboBox>
+            <ComboBox FontFamily="Comic Sans MS" Grid.Column="2" ItemsSource="{Binding SortItems}" DisplayMemberPath="Text" SelectedItem="{Binding SelectedSort}" SelectionChanged="ComboBox_SelectionChanged_1"></ComboBox>
         </Grid>
 
 
@@ -37,28 +37,47 @@
                         </Grid.ColumnDefinitions>
 
                         <Border Grid.Column="0" Height="48" Width="48" Margin="10">
-                            <Image Source="{Binding ProductPhoto}"/>
+                            <Image x:Name="MyImage">
+                                <Image.Style>
+                                    <Style TargetType="Image">
+                                        <Setter Property="Source" Value="{Binding ProductPhoto}"/>
+                                        
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ProductPhoto}" Value="{x:Null}">
+                                                <Setter Property="Source" Value="/Demo;component/Resources/picture.png"/>
+                                                
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Image.Style>
+                            </Image>
                         </Border>
 
                         <TextBlock Grid.Column="1">
-                            <Run FontWeight="Bold" Text="{Binding ProductName}"></Run>
+                            <Run FontWeight="Bold" FontFamily="Comic Sans MS" Text="{Binding ProductName}"></Run>
                             <LineBreak></LineBreak>
-                            <Run  Text="{Binding ProductDescription}"></Run>
+                            <Run FontFamily="Comic Sans MS"  Text="{Binding ProductDescription}"></Run>
                             <LineBreak></LineBreak>
-                            <Run  Text="{Binding ManuFacter.Name}"></Run>
+                            <Run FontFamily="Comic Sans MS"  Text="{Binding ManuFacter.Name}"></Run>
                             <LineBreak></LineBreak>
-                            <Run  Text="{Binding ProductCost}"></Run>
+                            <Run FontFamily="Comic Sans MS"  Text="{Binding ProductCost}"></Run>
                         </TextBlock>
 
-                        <TextBlock Grid.Column="2" FontSize="24" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding ProductQuantityInStock}"></TextBlock>
+                        <TextBlock Grid.Column="2" FontSize="24" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Comic Sans MS" Text="{Binding ProductQuantityInStock}"></TextBlock>
                         
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
-        <StackPanel Grid.Row="2">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             
+            <Label></Label>
+            <Button FontFamily="Comic Sans MS" Foreground="White" Background="Gray"  Name="deleteButton" Click="deleteButton_Click" Grid.Column="1" Height="25" Width="199" >Удалить</Button>
+            <Label></Label>
+            <Button FontFamily="Comic Sans MS" Foreground="White" Background="Gray"  Name="addButton" Click="addButton_Click" Grid.Column="1" Height="25" Width="199" >Добавить</Button>
+            <Label></Label>
+            <Button FontFamily="Comic Sans MS" Foreground="White" Background="Gray"  Name="redacButton" Click="redacButton_Click" Grid.Column="1" Height="25" Width="199" >Редактировать</Button>
         </StackPanel>
     </Grid>
 </Window>
