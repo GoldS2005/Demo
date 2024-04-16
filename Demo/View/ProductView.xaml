@@ -73,11 +73,11 @@
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             
             <Label></Label>
-            <Button FontFamily="Comic Sans MS" Foreground="White" Background="Gray"  Name="deleteButton" Click="deleteButton_Click" Grid.Column="1" Height="25" Width="199" >Удалить</Button>
+            <Button FontFamily="Comic Sans MS"   Name="deleteButton" Click="deleteButton_Click" Grid.Column="1" Height="25" Width="199" >Удалить</Button>
             <Label></Label>
-            <Button FontFamily="Comic Sans MS" Foreground="White" Background="Gray"  Name="addButton" Click="addButton_Click" Grid.Column="1" Height="25" Width="199" >Добавить</Button>
+            <Button FontFamily="Comic Sans MS"  Name="addButton" Click="addButton_Click" Grid.Column="1" Height="25" Width="199" >Добавить</Button>
             <Label></Label>
-            <Button FontFamily="Comic Sans MS" Foreground="White" Background="Gray"  Name="redacButton" Click="redacButton_Click" Grid.Column="1" Height="25" Width="199" >Редактировать</Button>
+            <Button FontFamily="Comic Sans MS"   Name="redacButton" Click="redacButton_Click" Grid.Column="1" Height="25" Width="199" >Редактировать</Button>
         </StackPanel>
     </Grid>
 </Window>

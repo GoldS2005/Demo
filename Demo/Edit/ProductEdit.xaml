@@ -57,7 +57,7 @@
                     </Style>
                 </Image.Style>
             </Image>
-            <Button FontFamily="Comic Sans MS" Click="SelectImage_Click" Margin="72,0,38,0">Выбрать</Button>
+            <Button FontFamily="Comic Sans MS" Click="SelectImage_Click" Margin="10,0">Выбрать</Button>
         </StackPanel>
     </Grid>
 </Window>
